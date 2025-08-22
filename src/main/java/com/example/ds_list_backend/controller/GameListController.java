@@ -2,15 +2,14 @@ package com.example.ds_list_backend.controller;
 
 import com.example.ds_list_backend.dto.GameListDto;
 import com.example.ds_list_backend.dto.GameMinDto;
+import com.example.ds_list_backend.dto.MovementDto;
 import com.example.ds_list_backend.service.GameListService;
 import com.example.ds_list_backend.service.GameService;
 import io.swagger.v3.oas.annotations.Operation;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -36,5 +35,13 @@ public class GameListController {
     public ResponseEntity<List<GameMinDto>> findByList(@PathVariable Long id) {
         var result = gameService.findByList(id);
         return ResponseEntity.ok(result);
+    }
+
+    @PostMapping("/{listId}/replacement")
+    @Operation(summary = "Move a posição de um jogo na lista")
+    public ResponseEntity<Void> move(@PathVariable Long listId, @RequestBody MovementDto movementDto)
+    {
+        gameListService.move(listId, movementDto);
+        return ResponseEntity.noContent().build();
     }
 }
