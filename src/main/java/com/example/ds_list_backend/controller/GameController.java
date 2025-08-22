@@ -22,7 +22,7 @@ public class GameController {
 
 
     @GetMapping
-    @Operation(summary = "Lista Todos os Games")
+    @Operation(summary = "Lista as GameList")
     public ResponseEntity<List<GameMinDto>> findAll() {
         var result = gameService.findAll();
         return ResponseEntity.ok(result);

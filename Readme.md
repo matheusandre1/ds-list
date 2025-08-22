@@ -1,3 +1,5 @@
+
+## Intensive Spring Boot - DevSuperior - Nélio alves
 ## Stack utilizada
 
 - Java 17
@@ -9,7 +11,11 @@
 
 # EndPoints
 
-> 
+
+> /games - Buscar Todos os Games </br>
+> /game/{id} - Busca Por Identificação Única </br>
+> /lists - Lista as GameList </br>
+> /lists/{id}/games - Lista as GameList por Categoria
 ## 🚀 Como executar o projeto
 
 > Pré-requisitos: Docker e Docker Compose instalados.
@@ -25,7 +31,6 @@ Clone o projeto
 Entre no diretório do projeto
 ```bash
 cd ds-list
-
 ```
 
 
