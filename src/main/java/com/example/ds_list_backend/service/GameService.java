@@ -1,5 +1,6 @@
 package com.example.ds_list_backend.service;
 
+import com.example.ds_list_backend.core.GameMinProjection;
 import com.example.ds_list_backend.dto.GameDto;
 import com.example.ds_list_backend.dto.GameMinDto;
 import com.example.ds_list_backend.repository.GameRepository;
@@ -25,6 +26,13 @@ public class GameService {
     public GameDto findById(Long id) {
         var result = gameRepository.findById(id);
         return result.map(GameDto::new).orElse(null);
+    }
+
+    @Transactional
+    public List<GameMinDto> findByList(Long listId)
+    {
+        var result = gameRepository.searchByList(listId);
+        return result.stream().map(GameMinDto::new).toList();
     }
 
 }

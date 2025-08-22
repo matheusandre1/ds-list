@@ -24,9 +24,9 @@ services:
       - 8083:80
     networks:
       - local-network
-  volumes:
+volumes:
     postgres-data:
 
-  networks:
+networks:
     local-network:
       driver: bridge
